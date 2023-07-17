@@ -6,8 +6,24 @@
     <title>Welcome Flask!</title>
 </head>
 <body>
-    <h4>
-        現在時間: {{nowtime}}
-    </h4>
+    <h2 style="color: brown;">
+       <body onload="current_time()">
+    <span id="current"></span>
+    </body>
+    </h2>
+    <h4><a href="/pm25">pm2.5資訊</a>
+        </h4>
 </body>
+
+
+<script>
+function current_time(){
+            NowDate=new Date();
+            h=NowDate.getHours();
+            m=NowDate.getMinutes();
+            s=NowDate.getSeconds();
+            document.getElementById('current').innerHTML = '現在時刻:'+h+'時'+m+'分'+s+'秒';
+            setTimeout('current_time()',1000);
+            }
+    </script>
 </html>

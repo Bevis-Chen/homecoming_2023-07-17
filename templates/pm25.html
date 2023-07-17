@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PM2.5--誰家紫爆</title>
+    <style>
+        form{
+            background-color:cornflowerblue;
+            width: 200px;
+            margin: 12px;
+            padding: 12px;
+        }
+
+    </style>
+</head>
+<body>
+    <h2>PM2.5即時資訊</h2>
+
+    <form action="/pm25">
+        <!-- name>> 是給後端看的 -->
+        <input type="checkbox" name="sort" id="sort"
+         {%if sort%} checked {%endif%}>排序
+        <button type="submit">更新</button>
+    </form>
+
+    <table border="1">
+        <thead>
+        <tr>
+        {% for col in columns%}           
+        <th> {{col}}</th>              
+        {%endfor%}</tr>
+        </thead>
+        <tbody>
+            {%for value in values%}
+            <tr>                
+                {%for item in value%}
+                <td>{{item}}<br></td>
+                {%endfor%}
+                </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+</body>
+<script>
+
+</script>
+
+</html>
