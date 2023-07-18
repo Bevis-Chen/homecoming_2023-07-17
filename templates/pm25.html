@@ -3,27 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PM2.5--誰家紫爆</title>
+    <title>PM2.5資訊</title>
     <style>
         form{
             background-color:cornflowerblue;
-            width: 200px;
-            margin: 12px;
+            font-size: large;
+            width: 50%;
+            margin: 0 auto;
             padding: 12px;
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            border-radius: 0.5rem;
+            text-align: center;
+        }
+        #reflash{
+            color: brown;
+        }
+        table{
+            margin: 0 auto;
+            width: 70%;
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        td{
+            background-color:skyblue;
+        }
+        th{
+            background-color:crimson;
+        }
+        td:nth-child(3){
+            background-color: blueviolet;
+            color:antiquewhite;
+            place-content: auto;
+        }
+        #開頭{
+            width: 50%;
+            margin: 0 auto;
         }
 
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
 </head>
 <body>
+    <div id="開頭">
     <h2>PM2.5即時資訊</h2>
-
-    <form action="/pm25">
+    <h3>現在時間: {{datetime}}</h3>
+    </div>
+    <form action="/pm25" method="POST">
         <!-- name>> 是給後端看的 -->
         <input type="checkbox" name="sort" id="sort"
          {%if sort%} checked {%endif%}>排序
-        <button type="submit">更新</button>
+        <button type="submit">更新</button>        
+        <span id="reflash"></span>
     </form>
-
+    
     <table border="1">
         <thead>
         <tr>
@@ -43,7 +75,17 @@
     </table>
 </body>
 <script>
+    // setInterval >> 定時執行某一個函式
+    // const reflashEL= document.querySelector("#reflash");
+    // console.log(reflashEL);
+    // document.write(reflashEL);
 
+    setInterval(function(){
+        // $ xxx.text >>更簡潔有力!
+        $("#reflash").text("更新中..."); 
+        // reflashEL.innerText= "更新中...";
+        location.reload();
+    }, 5000);
 </script>
 
 </html>
