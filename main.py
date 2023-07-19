@@ -1,17 +1,37 @@
 from flask import Flask, render_template, request
 from datetime import datetime
 from crawler.pm25 import get_pm25
+import json
 
 app= Flask(__name__)
+
+
 def get_today():
     now = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
-
     return now
 
 @app.route("/")
 def index():
 
     return render_template("index.html")
+
+@app.route("/pm25-charts")
+def pm25_charts():
+    return render_template("pm25-charts.html")
+
+
+@app.route("/pm25_json")
+def get_pm25_json():
+    columns, values= get_pm25()
+    sites= [value[0] for value in values]
+    pm25= [value[2] for value in values]
+    count= len(sites)
+
+    json_data= {"updatetime": get_today(), "counts": len(sites), "sites":sites, "pm25":pm25 }     
+    # json.dumps >> 輸出字串
+    return json.dumps(json_data, ensure_ascii= False)
+
+
 
 @app.route("/pm25", methods= ["GET", "POST"])
 def pm25values():
@@ -32,4 +52,5 @@ def get_nowtime():
     return render_template("index.html", nowtime= now)
 
 if __name__=="__main__":
+    # print(get_pm25_json())
     app.run(debug=True)
