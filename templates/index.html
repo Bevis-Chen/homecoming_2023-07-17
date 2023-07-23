@@ -1,38 +1,63 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome Flask!</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.3/echarts.min.js"></script>
+    <style>
+        body {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            background-color: bisque;
+            width: 50%;
+            margin: 0 auto;
+            /* padding: 12px; */
+        }
+    </style>
 </head>
+
 <body>
+
     <body>
-    <h2 style="color: brown;">
-       <body onload="current_time()">
-    <span id="current"></span>
+        <h2 style="color: brown;">
+
+            <body onload="current_time()">
+                <span id="current"></span>
+            </body>
+        </h2>
+        <span>
+            <ul>
+                <li>
+                    <h3><a href="/pm25">pm2.5資訊</a></h3>
+                </li>
+                <li>
+                    <h3><a href="/pm25-charts">pm2.5圖表</a></h3>
+                </li>
+                <li>
+                    <h3><a href="/pm25-json">輸出pm2.5 json檔案</a></h3>
+                </li>
+                <li>
+                    <h3><a href="/othercharts">其他圖表</a></h3>
+                </li>
+            </ul>
+        </span>
+
+
+
     </body>
-    </h2>
-    <span>
-        <ul>
-            <li><h3><a href="/pm25">pm2.5資訊</a></h3></li>
-            <li><h3><a href="/pm25-charts">pm2.5圖表</a></h3></li>
-        </ul></span>
-
-    
-        
-</body>
 
 
-<script>
-function current_time(){
-            NowDate=new Date();
-            h=NowDate.getHours();
-            m=NowDate.getMinutes();
-            s=NowDate.getSeconds();
-            document.getElementById('current').innerHTML = '現在時刻:'+h+'時'+m+'分'+s+'秒';
-            setTimeout('current_time()',1000);
-            }
+    <script>
+        function current_time() {
+            NowDate = new Date();
+            h = NowDate.getHours();
+            m = NowDate.getMinutes();
+            s = NowDate.getSeconds();
+            document.getElementById('current').innerHTML = '現在時刻:' + h + '時' + m + '分' + s + '秒';
+            setTimeout('current_time()', 1000);
+        }
     </script>
+
 </html>

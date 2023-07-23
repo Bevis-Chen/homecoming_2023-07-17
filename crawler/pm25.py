@@ -22,5 +22,5 @@ if __name__== "__main__":
     print(get_pm25(True))
     # pass
 
-# a= ["1", "12", "345"]
-# print(len(a))
+# a= {"A":[1, 5, 6], "b":2}
+# print(a["A"])
